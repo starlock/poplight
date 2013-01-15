@@ -23,8 +23,7 @@ poplight.Views.itemView = Backbone.View.extend({
     render: function() {
         var image = this.generateImage(50);
         var title = this.make('span', {}, this.options.product.title);
-
-        this.$el.append(image);
+				this.$el.css('background', 'url("' + this.options.product.images[0].sizes['1000'] + '") 450px 400px')
         this.$el.append(title);
         return this;
     },
