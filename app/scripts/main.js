@@ -7,11 +7,15 @@ window.poplight = {
   init: function() {
     var request = new API.Request('marketplace.popular.products', {}, 'GET');
     request.setOnSuccess(function(products) {
-			_.each(products, function(product) {
-				$('#product_list').append('<li class="product_item media">'
-				+ '<img src="' + product.images[0].sizes["50"]  + '" /><span>'
-				+ product.title + '</span></li>');
-			});
+        var item, list;
+        list = new poplight.Views.itemListView().render();
+        _.each(products, function(product) {
+            item = new poplight.Views.itemView({
+                'product': product
+            });
+            list.add(item);
+        });
+        $('#navigation').append(list.$el);
     });
     request.send();
   }
