@@ -1,4 +1,16 @@
 /* Will be compiled down to a single stylesheet with your sass files */
+body {
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 ul {
 	list-style: none;
+}
+
+#product-list img {
+    height: 50px;
 }

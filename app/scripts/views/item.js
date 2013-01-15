@@ -6,16 +6,22 @@ poplight.Views.itemView = Backbone.View.extend({
         'mouseover': 'onHover',
     },
 
-    generateImage: function() {
-        var image_url = this.options.product.images[0].sizes['50'];
+    getImageURL: function(size) {
+        size = size + ''; // Stringify
+        return this.options.product.images[0].sizes[size];
+    },
+
+    generateImage: function(size) {
+        var image_url = this.getImageURL(size);
         return this.make('img', {
             'src': image_url,
-            'alt': this.options.product.title
+            'alt': this.options.product.title,
+            'height': 50
         });
     },
 
     render: function() {
-        var image = this.generateImage();
+        var image = this.generateImage(50);
         var title = this.make('span', {}, this.options.product.title);
 
         this.$el.append(image);
@@ -24,6 +30,6 @@ poplight.Views.itemView = Backbone.View.extend({
     },
 
     onHover: function() {
-        console.log('Hovering');
-    },
+        this.trigger('hovered', this);
+    }
 });
