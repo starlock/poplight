@@ -1,4 +1,4 @@
-var API = (function(root, Backbone, xsrf_token) {
+var API = (function(root, Backbone, XSRF_TOKEN, API_ORIGIN) {
     root.TT = root.TT || {};
 
     XSRF = {
@@ -25,7 +25,7 @@ var API = (function(root, Backbone, xsrf_token) {
     };
 
     // Hack to automatically set xsrf_token directly in this project
-    XSRF.set(xsrf_token);
+    XSRF.set(XSRF_TOKEN);
 
     /**
      * Retrieve the absolute URL including protocol,
@@ -35,11 +35,7 @@ var API = (function(root, Backbone, xsrf_token) {
      * @return {string}
      */
     var getAbsoluteUrl = function(path) {
-        var origin = window.location.origin;
-        if (origin === undefined) {
-            origin = window.location.protocol + '//' + window.location.host;
-        }
-        return origin + path;
+        return API_ORIGIN + path;
     };
 
     /**
@@ -475,4 +471,4 @@ var API = (function(root, Backbone, xsrf_token) {
         }
     }, Backbone.Events);
     return API;
-})(window, window.Backbone, window.XSRF_TOKEN || null);
+})(window, window.Backbone, window.XSRF_TOKEN, window.API_ORIGIN);
