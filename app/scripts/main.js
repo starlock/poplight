@@ -6,9 +6,8 @@ window.poplight = {
   Routers: {},
   init: function() {
     var request = new API.Request('marketplace.popular.products', {}, 'GET');
-    request.setOnSuccess(function(responce) {
-        console.log('Got a response from API', response);
-        console.log(arguments);
+    request.setOnSuccess(function(products) {
+        console.log(products);
     });
     request.send();
     console.log('Hello from Backbone!');
