@@ -5,17 +5,29 @@ window.poplight = {
   Views: {},
   Routers: {},
 
+  showItemInformation: function(item) {
+    if (!_.isUndefined(poplight._currentShownItem)) {
+        poplight._currentShownItem.remove();
+    }
+    var info = new poplight.Views.itemInformationView({ 'item': item });
+    poplight.nodeBody.append(info.render().$el);
+    poplight._currentShownItem = info;
+  },
+
   onItemChange: function(selectedItem) {
     var image_url = selectedItem.getImageURL(2000);
-		$('#background_image').attr('src', image_url).load(function() {
-			image_url = 'url(' + image_url + ')';
-			$('body').css({
-					'background-image': image_url
-			});
-		});
+    $('#background_image').attr('src', image_url).load(function() {
+        image_url = 'url(' + image_url + ')';
+        $('body').css({
+            'background-image': image_url
+        });
+    });
+
+    poplight.showItemInformation(selectedItem);
   },
 
   init: function() {
+    poplight.nodeBody = $('body');
     var request = new API.Request('marketplace.popular.products', {}, 'GET');
     request.setOnSuccess(function(products) {
         var item, list;

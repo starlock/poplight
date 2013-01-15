@@ -1,15 +1,16 @@
 /* Will be compiled down to a single stylesheet with your sass files */
 body {
     background: no-repeat center center fixed; 
-		-webkit-background-size: cover;
-		-moz-background-size: cover;
-		-o-background-size: cover;
-		background-size: cover;
-		-o-transition: all .5s ease-in-out;
-		-ms-transition: all .5s ease-in-out;
-		-moz-transition: all .5s ease-in-out;
-		-webkit-transition: all .5s ease-in-out;
-		transition: all .5s ease-in-out;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	-o-transition: all .5s ease-in-out;
+	-ms-transition: all .5s ease-in-out;
+	-moz-transition: all .5s ease-in-out;
+	-webkit-transition: all .5s ease-in-out;
+	transition: all .5s ease-in-out;
+    position: relative;
 }
 
 #product-list {
@@ -35,4 +36,10 @@ body {
 
 #product-list img {
     height: 50px;
+}
+
+#product-information {
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }
