@@ -7,10 +7,12 @@ window.poplight = {
 
   onItemChange: function(selectedItem) {
     var image_url = selectedItem.getImageURL(2000);
-    image_url = 'url(' + image_url + ')';
-    $('body').css({
-        'background-image': image_url
-    });
+		$('#background_image').attr('src', image_url).load(function() {
+			image_url = 'url(' + image_url + ')';
+			$('body').css({
+					'background-image': image_url
+			});
+		});
   },
 
   init: function() {
