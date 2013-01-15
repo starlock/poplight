@@ -22,12 +22,14 @@ window.poplight = {
         var items = [];
 
         list = new poplight.Views.itemListView().render();
+				var windowHeight = $(window).height();
         _.each(products, function(product) {
             item = new poplight.Views.itemView({
                 'product': product
             });
             items.push(item);
             list.add(item);
+						$(item.el).css('height', (windowHeight / 10) - 10);
         });
 
         list.on('item.changed', poplight.onItemChange);
